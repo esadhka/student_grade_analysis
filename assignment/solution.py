@@ -1,16 +1,27 @@
 from typing import List
 
-# Write your function here
-def sum_of_evens(numbers: List[int]) -> int:
+def calculate_average(grades: List[int]) -> float:
     """
-    Given a list of integers, return the sum of all even numbers.
-    If the list is empty or there are no even numbers, return 0.
-    
-    Parameters:
-    numbers (List[int]): List of integers
-    
-    Returns:
-    int: Sum of even integers in the list
+    This function calculates the average grade from the list of grades.
+    The average should be rounded to two decimal places.
     """
-    # TODO: Implement the function logic here
-    pass  # Remove this line and write your solution
+    return round(sum(grades) / len(grades), 2)
+
+def grade_summary(grades: List[int]) -> str:
+    """
+    This function generates a summary of the students' grades:
+    - Average grade (rounded to two decimal places)
+    - Number of students who passed (grade >= 50)
+    - Number of students who failed (grade < 50)
+    - Number of students with honors (grade >= 90)
+    """
+    average = calculate_average(grades)
+    passed = sum(1 for grade in grades if grade >= 50)
+    failed = sum(1 for grade in grades if grade < 50)
+    honors = sum(1 for grade in grades if grade >= 90)
+    
+    return f"""Average Grade: {average}
+Number of students who passed: {passed}
+Number of students who failed: {failed}
+Number of students with honors: {honors}
+"""
